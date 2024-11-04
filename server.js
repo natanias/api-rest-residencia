@@ -15,17 +15,6 @@ app.post('/aluno', (req, res)=>{
 });
 
 
-app.get('/aluno/:id', (req, res)=>{
-    const { id } = req.params;
-    const aluno = find(id);
-    if(!aluno){
-        res.status(404).send();
-        return;
-    }
-    res.json(aluno);
-});
-
-
 app.put('/aluno/:id', (req, res)=>{
     const { id } = req.params;
     const { nome, email, nomeCurso } = req.body;
@@ -37,6 +26,16 @@ app.put('/aluno/:id', (req, res)=>{
     res.json(aluno);
 }
 );
+
+app.delete('/aluno/:id', (req, res)=>{        
+    const { id } = req.params;
+    const result = remove(id);
+    if(!result){
+        res.status(404).send();
+        return;
+    }
+    res.status(204).send();
+});
 
 
 app.listen(port, () => {
