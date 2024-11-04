@@ -42,6 +42,15 @@ app.get('/alunos', (req, res)=>{
     res.json(alunos);
 });
 
+app.get('/aluno/:id', (req, res)=>{
+    const { id } = req.params;
+    const aluno = find(id);
+    if(!aluno){
+        res.status(404).send();
+        return;
+    }
+    res.json(aluno);
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
