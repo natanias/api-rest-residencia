@@ -51,7 +51,7 @@ function remove(id) {
 }
 
 function findAll() {
-    return alunos;
+    return alunos.sort((a, b) => a.nome.localeCompare(b.nome));
 }
 
 module.exports = {

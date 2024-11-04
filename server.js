@@ -37,6 +37,11 @@ app.delete('/aluno/:id', (req, res)=>{
     res.status(204).send();
 });
 
+app.get('/alunos', (req, res)=>{
+    const alunos = findAll();
+    res.json(alunos);
+});
+
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
